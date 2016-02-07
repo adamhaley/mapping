@@ -1,0 +1,22 @@
+{
+  "name": "mapping",
+  "version": "1.0.0",
+  "description": "Mapping wrapper for GDAL . generates map tiles from images",
+  "main": "outputTiles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamhaley/mapping.git"
+  },
+  "author": "Adam Haley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamhaley/mapping/issues"
+  },
+  "homepage": "https://github.com/adamhaley/mapping#readme",
+  "devDependencies": {
+    "child-process-promise": "^1.1.0"
+  }
+}
