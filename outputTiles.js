@@ -17,14 +17,25 @@ var config = {
 }
 
 var gcp = {
-	"zoom2": "-gcp 813 0 -75.11309750080589 40.00075722790161 -gcp 0 1060 -75.20276002405969 39.909756458032085 -gcp 813 1060 -75.11309750080589 39.909756458032085",
-	"zoom3": ""
+	"zoom2": "-gcp 7202 0 -75.11309750080589 40.00075722790161 -gcp 0 9379 -75.20276002405969 39.909756458032085 -gcp 7202 9379 -75.11309750080589 39.909756458032085",
+	"zoom3": "-gcp 16723 0 -75.11309750080589 40.00075722790161 -gcp 0 21782 -75.20276002405969 39.909756458032085 -gcp 16723 21782 -75.11309750080589 39.909756458032085"
 }
 
 var zooms = {
 	"zoom2": "14-16",
 	"zoom3": "16-18"
 }
+
+// remove any stale vrt files from previous executions of this script
+fs.unlink("vrt/translated.vrt",function(data){
+	console.log(data);
+});
+fs.unlink("vrt/warped.vrt",function(data){
+	console.log(data);
+});
+fs.unlink("vrt/expanded.vrt",function(data){
+	console.log(data);
+});
 
 
 var command1 = "gdal_translate -of VRT -a_srs EPSG:4326  " + gcp["zoom" + zoom] + " " + config.srcDir + config.srcFilename + " " + config.vrtDir + "translated.vrt";
@@ -35,7 +46,7 @@ var command4 = "gdal2tiles.py --zoom " + zooms["zoom" + zoom] + " "+config.vrtDi
 var progressHandler = function(childProcess){
 	console.log('[spawn] childProcess.pid: ', childProcess.pid);
 	childProcess.stdout.on('data', function (data) {
-		console.log('[spawn] stdout: ', data.toString());
+		console.log(data.toString());
 	});
 	childProcess.stderr.on('data', function (data) {
 		console.log('[spawn] stderr: ', data.toString());
@@ -43,7 +54,7 @@ var progressHandler = function(childProcess){
 }
 
 var execCommand4 = function(){
-	console.log("running command1...");
+	console.log("running " + command4);
 	exec(command4,[])
 	.progress(progressHandler)
 	.then(function(){
@@ -55,7 +66,7 @@ var execCommand4 = function(){
 };
 
 var execCommand3 = function(){
-	console.log("running command1...");
+	console.log("running " + command3);
 	exec(command3,[])
 	.progress(progressHandler)
 	.then(function(){
@@ -67,7 +78,7 @@ var execCommand3 = function(){
 };
 
 var execCommand2 = function(){
-	console.log("running command2...");
+	console.log("running " + command2);
 	exec(command2,[])
 	.progress(progressHandler)
 	.then(function(){
@@ -79,7 +90,7 @@ var execCommand2 = function(){
 };
 
 // spawn gdal scripts as child processes
-console.log("running command1...");
+console.log("running " + command1);
 exec(command1,[])
 .progress(progressHandler)
 .then(function(){
