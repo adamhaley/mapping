@@ -1,22 +1,11 @@
 #!/usr/bin/env node
 var exec = require('child-process-promise').exec;
-
+var fs = require('fs');
 
 var fill = "-fill"
 	, step = "02"
 	, zoom = "2"
 	;
-
-var dimensions = {
-	"zoom2": {
-		"latlng": [40.00075722790161,-75.11309750080589,39.909756458032085],
-		"pixels": [0,813,1060]
-	},
-	"zoom3": {
-		"latlng": [],
-		"pixels": []
-	}
-}
 
 
 var config = {
