@@ -3,16 +3,16 @@ var exec = require('child-process-promise').exec;
 var fs = require('fs');
 
 var fill = "-fill"
-	, step = "02"
-	, zoom = "2"
+	, step = "01"
+	, zoom = "3"
 	;
 
 
 var config = {
 	rootDir: "/Users/adamhaley/www/mapping/",
-	srcFilename: "es-hftr-map-z2-step-" + step + "-fs8.png",
-	srcDir: "MapZooms_v3/hftr-map-z" + zoom + "-v3-comp/",
-	outputDir: "map_tiles/z" + zoom + "-step-" + step + fill,
+	srcFilename: "es-hftr-map-z"+zoom+"-step-"+step+fill"-fs8.png",
+	srcDir: "MapZooms_v3/hftr-map-z"+zoom+"-v3-comp/",
+	outputDir: "map_tiles/z"+zoom+"-step-"+step+fill,
 	vrtDir: "vrt/"
 }
 
