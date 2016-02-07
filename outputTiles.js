@@ -4,13 +4,13 @@ var fs = require('fs');
 
 var fill = "-fill"
 	, step = "01"
-	, zoom = "3"
+	, zoom = "2"
 	;
 
 
 var config = {
 	rootDir: "/Users/adamhaley/www/mapping/",
-	srcFilename: "es-hftr-map-z"+zoom+"-step-"+step+fill"-fs8.png",
+	srcFilename: "es-hftr-map-z"+zoom+"-step-"+step+fill+"-fs8.png",
 	srcDir: "MapZooms_v3/hftr-map-z"+zoom+"-v3-comp/",
 	outputDir: "map_tiles/z"+zoom+"-step-"+step+fill,
 	vrtDir: "vrt/"
