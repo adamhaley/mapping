@@ -41,7 +41,7 @@ var zooms = {
 var command1 = "gdal_translate -of VRT -a_srs EPSG:4326  " + gcp["zoom" + zoom] + " " + config.srcDir + config.srcFilename + " " + config.vrtDir + "translated.vrt";
 var command2 = "gdalwarp -of VRT -t_srs EPSG:4326 "+config.vrtDir+"translated.vrt "+config.vrtDir+"warped.vrt";
 var command3 = "gdal_translate -of vrt -expand rgba "+config.vrtDir+"warped.vrt "+config.vrtDir+"expanded.vrt";
-var command4 = "gdal2tiles.py --zoom " + zooms["zoom" + zoom] + " "+config.vrtDir+" expanded.vrt " + config.outputDir;
+var command4 = "gdal2tiles.py --zoom " + zooms["zoom" + zoom] + " "+config.vrtDir+"expanded.vrt " + config.outputDir;
 
 var progressHandler = function(childProcess){
 	console.log('[spawn] childProcess.pid: ', childProcess.pid);
