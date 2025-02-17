@@ -9,7 +9,7 @@ var fill = "-fill"
 
 
 var config = {
-	rootDir: "/Users/adamhaley/www/mapping/",
+	rootDir: ".",
 	srcFilename: "es-hftr-map-z"+zoom+"-step-"+step+fill+"-fs8.png",
 	srcDir: "MapZooms_v3/hftr-map-z"+zoom+"-v3-comp/",
 	outputDir: "map_tiles/z"+zoom+"-step-"+step+fill,
@@ -27,6 +27,7 @@ var zooms = {
 }
 
 // remove any stale vrt files from previous executions of this script
+/*
 fs.unlink("vrt/translated.vrt",function(data){
 	console.log(data);
 });
@@ -36,7 +37,7 @@ fs.unlink("vrt/warped.vrt",function(data){
 fs.unlink("vrt/expanded.vrt",function(data){
 	console.log(data);
 });
-
+a*/
 
 var command1 = "gdal_translate -of VRT -a_srs EPSG:4326  " + gcp["zoom" + zoom] + " " + config.srcDir + config.srcFilename + " " + config.vrtDir + "translated.vrt";
 var command2 = "gdalwarp -of VRT -t_srs EPSG:4326 "+config.vrtDir+"translated.vrt "+config.vrtDir+"warped.vrt";
